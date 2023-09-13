@@ -16,7 +16,7 @@ first we run a registry images are pushed to this registry and the talos image w
 docker run --rm -p 5000:5000 --name registry registry:2
 ```
 
-# Build and push a u-boot image (optional)
+# Build and push a u-boot image
 
 Here u-boot next branch is used, talos obviously uses a u-boot release.
 
@@ -31,6 +31,8 @@ call to your docker registry, takes about a minute on my machine, all good.
 
 # Build and push a kernel image
 
+In the doall script [this](https://patchwork.kernel.org/project/linux-pci/patch/20230623144100.34196-3-james.quinlan@broadcom.com/) patch is applied.
+
 ```bash
 cd pkgs
 ./doall
@@ -38,8 +40,9 @@ cd pkgs
 
 get a lot of coffee.
 
-
 # build a talos image
+
+The Dockerfile is patched so it uses the u-boot and kernel images.
 
 ```bash
 cd pkgs

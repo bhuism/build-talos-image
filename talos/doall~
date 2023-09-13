@@ -1,0 +1,20 @@
+#!/bin/sh
+
+renice -n 19 $$
+
+make -j$(nproc) clean
+
+#make uki-certs
+
+make -j$(nproc) kernel initramfs PLATFORM=linux/arm64
+make -j$(nproc) installer IMAGE_REGISTRY=127.0.0.1:5000 PUSH=true
+make -j$(nproc) imager IMAGE_REGISTRY=127.0.0.1:5000 PUSH=true
+make -j$(nproc) iso IMAGE_REGISTRY=127.0.0.1:5000 PLATFORM=linux/arm64 PUSH=true 
+make -j$(nproc) sbc-rpi_generic IMAGE_REGISTRY=127.0.0.1:5000 PLATFORM=linux/arm64 PUSH=true
+
+echo 'clean /dev/sda with'
+echo 'sudo wipefs -a /dev/sda ; sync'
+
+
+echo 'write image with:'
+echo 'time xz -d < _out/metal-rpi_generic-arm64.raw.xz | sudo dd of=/dev/sda bs=1M status=progress conv=fsync ; sync'

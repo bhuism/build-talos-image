@@ -1,0 +1,14 @@
+diff --git a/kernel/prepare/pkg.yaml b/kernel/prepare/pkg.yaml
+index 5fbb68e..984280b 100644
+--- a/kernel/prepare/pkg.yaml
++++ b/kernel/prepare/pkg.yaml
+@@ -14,6 +14,9 @@ steps:
+     prepare:
+       - |
+         tar -xJf linux.tar.xz --strip-components=1
++
++        patch -p0 < /pkg/patches/patch_2_of_5.patch
++
+         rm linux.tar.xz
+ 
+         mkdir /bin

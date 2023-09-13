@@ -1,0 +1,42 @@
+#!/bin/bash
+
+set -x
+renice -n 19 $$
+
+export CROSS_COMPILE=aarch64-linux-gnu-
+
+docker rmi 127.0.0.1:5000/ubootbash:latest || true
+
+rm -Rf build
+mkdir build
+
+
+
+#RPI_ARM64_GENERIC_U_BOOT=rpi_generic_u-boot
+
+#rm -Rf ${RPI_ARM64_GENERIC_U_BOOT}
+#mkdir ${RPI_ARM64_GENERIC_U_BOOT}
+#tar -xjf u-boot-2023.01.tar.bz2 --strip-components=1 -C ${RPI_ARM64_GENERIC_U_BOOT}
+
+#cp Dockerfile ${RPI_ARM64_GENERIC_U_BOOT}
+
+#cd ${RPI_ARM64_GENERIC_U_BOOT}
+#patch -p1 < ../0002-rpi-add-NVMe-to-boot-order.patch
+#patch -p1 < ../0003-Revert-nvme-Correct-the-prps-per-page-calculation-me.patch
+#patch -p1 < ../0004-usb-xhci-brcm-Make-driver-compatible-with-downstream.patch
+#patch -p1 < ../0005-nvme-improve-readability-of-nvme_setup_prps.patch
+#patch -p1 < ../0006-nvme-Use-pointer-for-CPU-addressed-buffers.patch
+#patch -p1 < ../0007-nvme-translate-virtual-addresses-into-the-bus-s-addr.patch
+#patch -p1 < ../0008-enable-nvme-and-fixup-efi-boot.patch
+#patch -p1 < ../0001-pci-pcie-brcmstb-do-not-rely-on-CLKREQ-signal.patch.txt
+
+make -j $(nproc) clean rpi_arm64_defconfig
+
+sed -i "s/CONFIG_TOOLS_LIBCRYPTO=y/# CONFIG_TOOLS_LIBCRYPTO is not set/" .config
+
+make -j $(nproc) HOSTLDLIBS_mkimage="-lssl -lcrypto"
+
+
+docker build -t 127.0.0.1:5000/ubootbash:latest . && docker push 127.0.0.1:5000/ubootbash:latest
+
+#nice -n 19 aarch64-linux-gnu-objdump -S -D u-boot > /tmp/disassembled.asm

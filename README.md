@@ -31,7 +31,7 @@ call to your docker registry, takes about a minute on my machine, all good.
 
 # Build and push a kernel image
 
-In the doall script [this](https://patchwork.kernel.org/project/linux-pci/patch/20230623144100.34196-3-james.quinlan@broadcom.com/) patch is applied.
+Currently the doall script applies [this](https://patchwork.kernel.org/project/linux-pci/patch/20230623144100.34196-3-james.quinlan@broadcom.com/) patch to mitigate [this](https://bugzilla.kernel.org/show_bug.cgi?id=217276) issue.
 
 ```bash
 cd pkgs

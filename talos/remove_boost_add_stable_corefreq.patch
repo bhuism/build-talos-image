@@ -1,0 +1,13 @@
+diff --git a/internal/app/machined/pkg/runtime/v1alpha1/board/rpi_generic/config.txt b/internal/app/machined/pkg/runtime/v1alpha1/board/rpi_generic/config.txt
+index 727cb39..f50a43e 100644
+--- a/internal/app/machined/pkg/runtime/v1alpha1/board/rpi_generic/config.txt
++++ b/internal/app/machined/pkg/runtime/v1alpha1/board/rpi_generic/config.txt
+@@ -10,7 +10,7 @@ kernel=u-boot.bin
+ # Forces the kernel loading system to assume a 64-bit kernel.
+ arm_64bit=1
+ # Run as fast as firmware / board allows.
+-arm_boost=1
++core_freq=250
+ # Enable the primary/console UART.
+ enable_uart=1
+ # Disable Bluetooth.

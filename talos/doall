@@ -12,12 +12,12 @@ mkdir build
 
 git clone --depth 1 -b $TALOSRELEASE git@github.com:siderolabs/talos.git build
 
-cp custom_uboot_and_kernel.patch build
+cp -v *.patch build
 
 cd build
 
 git apply custom_uboot_and_kernel.patch
-
+#git apply remove_boost_add_stable_corefreq.patch
 
 make -j$(nproc) clean
 

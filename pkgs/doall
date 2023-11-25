@@ -5,9 +5,7 @@ PKGSBRANCH=v1.5.0
 renice -n 19 $$
 
 rm -Rf build
-mkdir build
-
-git clone --depth 1 -b $PKGSBRANCH git@github.com:siderolabs/pkgs.git build
+git clone --depth 1 -b $PKGSBRANCH https://github.com/siderolabs/pkgs build
 
 mkdir build/kernel/prepare/patches
 cp patch_2_of_5.patch build/kernel/prepare/patches

@@ -1,16 +1,14 @@
 #!/bin/sh
 
 
-TALOSRELEASE=v1.5.2
+TALOSRELEASE=v1.5.5
 
 set -e
 
 renice -n 19 $$
 
 rm -Rf build
-mkdir build
-
-git clone --depth 1 -b $TALOSRELEASE git@github.com:siderolabs/talos.git build
+git clone --depth 1 -b $TALOSRELEASE https://github.com/siderolabs/talos build
 
 cp -v *.patch build
 

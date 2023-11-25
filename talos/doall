@@ -21,8 +21,8 @@ make -j$(nproc) clean
 
 #make uki-certs
 make -j$(nproc) kernel initramfs PLATFORM=linux/arm64
-make -j$(nproc) installer IMAGE_REGISTRY=127.0.0.1:5000 PUSH=true
-make -j$(nproc) imager IMAGE_REGISTRY=127.0.0.1:5000 PUSH=true
+make -j$(nproc) installer IMAGE_REGISTRY=127.0.0.1:5000 PLATFORM=linux/arm64 PUSH=true
+make -j$(nproc) imager IMAGE_REGISTRY=127.0.0.1:5000 PLATFORM=linux/arm64 PUSH=true
 make -j$(nproc) iso IMAGE_REGISTRY=127.0.0.1:5000 PLATFORM=linux/arm64 PUSH=true 
 make -j$(nproc) sbc-rpi_generic IMAGE_REGISTRY=127.0.0.1:5000 PLATFORM=linux/arm64 PUSH=true
 

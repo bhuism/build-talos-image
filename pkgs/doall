@@ -16,6 +16,9 @@ cd build
 
 git apply add_patch_2_of_5.patch
 
+sed -i 's/kconfig-hardened-check/kernel-hardening-checker/g' kernel/build/pkg.yaml
+sed -i 's/kconfig-hardened-check/kernel-hardening-checker/g' kernel/prepare/pkg.yaml
+
 make -j$(nproc) USERNAME=rsmitty PUSH=true PLATFORM=linux/arm64 REGISTRY=127.0.0.1:5000 kernel 
 
 cd ..

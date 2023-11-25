@@ -42,7 +42,7 @@ get a lot of coffee.
 
 When succesfull you should see a ```"PUT /v2/rsmitty/kernel/manifests/v1.5.0-9-g7f9d6eb-dirty HTTP/1.1"``` in your registry log.
 
-# build a talos image
+# Build a talos image
 
 The Dockerfile is patched so it uses the u-boot and kernel images.
 

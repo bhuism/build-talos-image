@@ -9,7 +9,7 @@ docker rmi 127.0.0.1:5000/ubootbash:latest || true
 
 rm -Rf build
 mkdir build
-git clone --depth 1 -b next git@github.com:u-boot/u-boot.git build
+git clone --depth 1 -b next https://github.com/u-boot/u-boot.git build
 
 cp -v Dockerfile build
 

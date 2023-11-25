@@ -8,10 +8,10 @@ index a335112cc..471044879 100644
  
 -FROM ghcr.io/siderolabs/kernel:${PKGS} AS pkg-kernel
 +#FROM ghcr.io/siderolabs/kernel:${PKGS} AS pkg-kernel
-+FROM 127.0.0.1:5000/rsmitty/kernel:v1.5.0-9-g7f9d6eb-dirty AS pkg-kernel
++FROM 127.0.0.1:5000/rsmitty/kernel:v1.5.0-dirty AS pkg-kernel
  FROM --platform=amd64 ghcr.io/siderolabs/kernel:${PKGS} AS pkg-kernel-amd64
 -FROM --platform=arm64 ghcr.io/siderolabs/kernel:${PKGS} AS pkg-kernel-arm64
-+FROM --platform=arm64 127.0.0.1:5000/rsmitty/kernel:v1.5.0-9-g7f9d6eb-dirty AS pkg-kernel-arm64
++FROM --platform=arm64 127.0.0.1:5000/rsmitty/kernel:v1.5.0-dirty AS pkg-kernel-arm64
 +
 +#FROM --platform=arm64 ghcr.io/siderolabs/u-boot:${PKGS} AS pkg-u-boot-arm64
 +FROM --platform=arm64 127.0.0.1:5000/ubootbash:latest AS pkg-u-boot-arm64

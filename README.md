@@ -47,7 +47,7 @@ When succesfull you should see a ```"PUT /v2/rsmitty/kernel/manifests/v1.5.0-9-g
 The Dockerfile is patched so it uses the u-boot and kernel images.
 
 ```bash
-cd pkgs
+cd talos
 ./doall
 ```
 

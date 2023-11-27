@@ -1,4 +1,4 @@
-## Scripts for building a talos image
+## Scripts for building a talos image for the cm4
 
 A couple of scripts needed for build a talos image, mainly for create custom images and trying out patched for u-boot or the kernel.
 
